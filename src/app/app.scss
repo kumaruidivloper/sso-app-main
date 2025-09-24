@@ -1,0 +1,25 @@
+ .main-app {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .login-btn, .open-sub-btn, .logout-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-btn { background-color: #007bff; color: white; }
+    .open-sub-btn { background-color: #28a745; color: white; }
+    .logout-btn { background-color: #dc3545; color: white; }
+    .communication-log {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+    .log-entry {
+      padding: 5px 0;
+      border-bottom: 1px solid #dee2e6;
+    }
