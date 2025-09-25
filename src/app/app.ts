@@ -21,18 +21,19 @@ export class AppComponent {
     this.app2Window = window.open(this.app2Url, 'app2');
   }
 
-  sendMessage() {
+  sendMessageToApp2(value: any) {
     if (this.app2Window) {
       this.app2Window.postMessage(
-        { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!' },
+        { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!', process: value },
         this.app2Url
       );
+
     } else {
       console.warn('App2 window not opened yet');
     }
   }
 
-  ngOnInit() {
+ngOnInit() {
   window.addEventListener('message', this.handleMessage);
 }
 
@@ -40,7 +41,22 @@ handleMessage = (event: MessageEvent) => {
   if (event.origin !== 'http://localhost:4201') return;
   console.log('Message received in App1:', event.data);
   this.message.set(event.data);
-  this.counter.set(this.counter() + 1);
+  this.conterHandler(event.data.process);
 };
 
+conterHandler(value: any) {
+  if(value === 'minus') {
+    this.counter.set(this.counter() - 1);
+  } else if(value === 'pluse') {
+    this.counter.set(this.counter() + 1);
+  }
+}
+
+incrementApp2(value: any) {
+    this.sendMessageToApp2(value);
+}
+
+decrementApp2(value: any) {
+  this.sendMessageToApp2(value);
+}
 }
