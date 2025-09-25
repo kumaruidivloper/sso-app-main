@@ -1,28 +1,6 @@
-<div class="main-app">
-      <h1>Main Application</h1>
-      
-      @if(!isLoggedIn) {
-        <div class="auth-section">
-        <button (click)="login()" class="login-btn">Login with SSO</button>
-      </div>
-      }
-      
-      @if(isLoggedIn) {
-        <div class="logged-in-section">
-          <h2>Welcome, {{ userInfo?.name }}!</h2>
-          <p>Email: {{ userInfo?.email }}</p>
-          <button (click)="openSubApp()" class="open-sub-btn">Open Sub Application</button>
-          <button (click)="logout()" class="logout-btn">Logout</button>
-        </div>
-      }
-      
-      
-      <div class="communication-log">
-        <h3>Communication Log:</h3>
-        @for (log of communicationLogs; track log) {
-            <div class="log-entry">
-              {{ log }}
-            </div>
-        }
-      </div>
-    </div>
+<h1>{{message() | json}}</h1>
+<button (click)="openApp2()">Open App2</button>
+    <button (click)="sendMessage()">Send Message to App2</button>
+
+<h1>Counter: {{counter() }}</h1>
+
