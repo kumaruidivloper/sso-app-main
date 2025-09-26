@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.scss'
 })
 export class AppComponent {
-  private app2Url = 'http://localhost:4201';
+  private app2Url = 'https://kumaruidivloper.github.io/sso-app-sub/';
   private app2Window: Window | null = null;
   message = signal<any>('Waiting for message... from App2');
   counter = signal<number>(0)
@@ -38,7 +38,8 @@ ngOnInit() {
 }
 
 handleMessage = (event: MessageEvent) => {
-  if (event.origin !== 'http://localhost:4201') return;
+  const expectedPath = '/sso-app-sub/';
+  if (event.origin + expectedPath  !== 'https://kumaruidivloper.github.io/sso-app-sub/') return;
   console.log('Message received in App1:', event.data);
   this.message.set(event.data);
   this.conterHandler(event.data.process);
