@@ -15,28 +15,14 @@ export class AppComponent {
   // private app2Window: Window | null = null;
   message = signal<any>('Waiting for message... from App2');
   counter = signal<number>(0)
-  selectedForm:any;
+  selectedForm: string = 'Please select the form';
 
   constructor(
     public sharedService: SharedService
-  ) {}
-
-  // openApp2() {
-  //   // ✅ This will work since it's directly from a user action
-  //   this.app2Window = window.open(this.app2Url, 'app2');
-  // }
-
-  // sendMessageToApp2(value: any) {
-  //   if (this.app2Window) {
-  //     this.app2Window.postMessage(
-  //       { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!', process: value },
-  //       this.app2Url
-  //     );
-
-  //   } else {
-  //     console.warn('App2 window not opened yet');
-  //   }
-  // }
+  ) {
+    // Optionally log to debug
+    console.log("selectedForm on init:", this.selectedForm);
+  }
 
 ngOnInit() {
   window.addEventListener('message', this.handleMessage);
