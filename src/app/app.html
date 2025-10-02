@@ -18,13 +18,21 @@
   <option value="third">Third Form</option>
 </select> -->
 <div>
+<mat-radio-group [(ngModel)]="selectedOption" aria-label="Select an option">
+  <mat-radio-button value="1">Communicate Via Ifram</mat-radio-button>
+  <mat-radio-button value="2">Communicate Via Tab</mat-radio-button>
+</mat-radio-group>
+</div>
+<div>
 
 </div>
 
 <div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 10px; background-color: rgb(196, 255, 218); margin-bottom: 20px;">
-  <button (click)="incrementApp2('pluse')">+</button>
+  <!-- <button (click)="incrementApp2('pluse')">+</button> -->
+  <button matMiniFab (click)="incrementApp2('pluse')"><mat-icon>add</mat-icon></button>
   <h1>Counter: {{counter() }}</h1>
-  <button (click)="decrementApp2('minus')">-</button>
+  <!-- <button (click)="decrementApp2('minus')">-</button> -->
+  <button matMiniFab (click)="decrementApp2('minus')"><mat-icon>remove</mat-icon></button>
 </div>
 
 <div style="text-align: center; width: 50%; padding: 10px; border: solid 1px #000; margin: 0 auto; border-radius:20px;">
@@ -33,6 +41,19 @@
   </h3>
 </div>
 </div>
+
+@if(selectedOption === '1') {
+  <div style="width: 80%; margin: 10px auto; border: solid 4px #b07011; background-color: #b07011; border-radius: 10px; color: #fff;">
+  <h3 style="text-align: center;">SUB APP INSIDE THE IFRAME</h3>
+  <iframe 
+    #myIframe 
+    id="app2-iframe"
+    src="http://localhost:4201" 
+    width="100%"
+    style="border: none; min-height: 500px;">
+  </iframe>
+</div>
+}
 
 
 
