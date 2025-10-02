@@ -1,13 +1,24 @@
 
-<div style="margin: 0 auto; width: 80%;">
-<div style="text-align: center;">
-  <button (click)="sharedService.sendMessageToApp2('message')" style="padding: 8px; margin-right: 10px;">Send Message to App2</button>
-  <select [(ngModel)]="selectedForm" (change)="onChange($event)" name="forms" id="forms" style="padding: 8px;">
+<div style="margin: 0 auto; width: 80%; padding: 10px 10px;">
+<div style="text-align: center;">     
+  <button matButton="tonal" (click)="sharedService.sendMessageToApp2('message')" style="margin-right: 20px;">Send Message to App2</button>
+  <mat-form-field appearance="outline" style="width: 250px;">
+  <mat-label>Please Select the Form</mat-label>
+  <mat-select [(ngModel)]="selectedForm" (selectionChange)="onChange($event)" name="forms" id="forms">
+    <mat-option value="please select the form">please select the form</mat-option>
+    <mat-option value="first">First Form</mat-option>
+    <mat-option value="second">Second Form</mat-option>
+    <mat-option value="third">Third Form</mat-option>
+  </mat-select>
+  </mat-form-field>
+<!-- <select [(ngModel)]="selectedForm" (change)="onChange($event)" name="forms" id="forms" style="padding: 8px;">
   <option value="please select the form">please select the form</option>
   <option value="first">First Form</option>
   <option value="second">Second Form</option>
   <option value="third">Third Form</option>
-</select>
+</select> -->
+<div>
+
 </div>
 
 <div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 10px; background-color: rgb(196, 255, 218); margin-bottom: 20px;">
@@ -22,5 +33,7 @@
   </h3>
 </div>
 </div>
+
+
 
 

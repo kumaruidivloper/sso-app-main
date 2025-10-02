@@ -1,35 +1,48 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from './services/shared-service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule, MatButtonModule, MatSelectModule, MatRadioModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   private app2Url = 'http://localhost:4201';
+  // private app2Url = 'https://kumaruidivloper.github.io/sso-app-sub/';
   // private app2Window: Window | null = null;
   message = signal<any>('Waiting for message... from App2');
   counter = signal<number>(0)
   selectedForm: string = 'Please select the form';
+  selectedOption: string = '1';
+  @ViewChild('myIframe') myIframe!: ElementRef<HTMLInputElement>;
+  iframeSize!: number;
 
   constructor(
     public sharedService: SharedService
   ) {
-    // Optionally log to debug
-    console.log("selectedForm on init:", this.selectedForm);
   }
 
 ngOnInit() {
   window.addEventListener('message', this.handleMessage);
 }
 
+ngAfterViewInit() {
+    // console.log(this.myIframe.nativeElement);
+  }
+
 handleMessage = (event: MessageEvent) => {
-  if (event.origin !== 'http://localhost:4201') return;
+  const expectedPath = '/sso-app-sub/';
+  // if (event.origin + expectedPath  !== 'https://kumaruidivloper.github.io/sso-app-sub/') return;
+  if (event.origin  !== 'http://localhost:4201') return;
   console.log('Message received in App1:', event.data);
   this.message.set(event.data);
   this.conterHandler(event.data.process);
@@ -51,14 +64,17 @@ decrementApp2(value: any) {
   this.sharedService.sendMessageToApp2(value);
 }
 
-onChange($event:any) {
-  if (!this.sharedService.app2Window || this.sharedService.app2Window.closed) {
+onChange($event:MatSelectChange) {
+      if (!this.sharedService.app2Window || this.sharedService.app2Window.closed) {
       this.sharedService.openApp2();
   }
 
+
   setTimeout(() => {
-   this.sharedService.sendMessageToApp2($event.target.value);
+    console.log()
+   this.sharedService.sendMessageToApp2($event.value);
   }, 100); // 100ms is usually enough
   
 }
+
 }
