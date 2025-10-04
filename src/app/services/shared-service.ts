@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
     private app2Url = 'http://localhost:4201';
+    // private app2Url = 'https://kumaruidivloper.github.io/sso-app-sub/'
     public app2Window: Window | null = null;
     private selectedOption: string = '1';
   
@@ -16,7 +17,7 @@ export class SharedService {
     sendMessageToApp2(value: any) {
       if (this.app2Window) {
         this.app2Window.postMessage(
-          { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!', process: value },
+          { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!', process: value, typeOfComm:  this.selectedOption},
           this.app2Url
         );
       } else {
@@ -33,7 +34,12 @@ export class SharedService {
     let data = { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!', process: value, resize: resize }
     const iframe = document.getElementById('app2-iframe') as HTMLIFrameElement;
     iframe?.contentWindow?.postMessage(data,
-      'http://localhost:4201');
+      
+      'http://localhost:4201'
+      // 'https://kumaruidivloper.github.io/sso-app-sub/'
+      
+      
+    );
   }
 
 }
