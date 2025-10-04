@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SharedService {
-    private app2Url = 'http://localhost:4201';
-    // private app2Url = 'https://kumaruidivloper.github.io/sso-app-sub/'
+    // private app2Url = 'http://localhost:4201';
+    private app2Url = 'https://kumaruidivloper.github.io/sso-app-sub/'
     public app2Window: Window | null = null;
     private selectedOption: string = '1';
   
@@ -34,11 +34,8 @@ export class SharedService {
     let data = { type: 'GREETING_FROM_APP1', payload: 'Hello from App1!', process: value, resize: resize }
     const iframe = document.getElementById('app2-iframe') as HTMLIFrameElement;
     iframe?.contentWindow?.postMessage(data,
-      
-      'http://localhost:4201'
-      // 'https://kumaruidivloper.github.io/sso-app-sub/'
-      
-      
+      'https://kumaruidivloper.github.io/sso-app-sub/'
+      // 'http://localhost:4201'
     );
   }
 
