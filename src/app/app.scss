@@ -23,3 +23,15 @@
       padding: 5px 0;
       border-bottom: 1px solid #dee2e6;
     }
+
+  .card-style {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 31px;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+    background-color: #5bc228;
+}

@@ -21,13 +21,13 @@
 
 </div>
 
-<div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 20px 10px; background-color: rgb(196, 255, 218); margin-bottom: 20px;">
-  <!-- <button (click)="incrementApp2('pluse')">+</button> -->
-  <button style="display: inline-block;" matMiniFab (click)="decrementApp2('minus')"><mat-icon>remove</mat-icon></button>
-  <h1 style="display: inline-block; margin: 0 15px;">Counter: {{counter() }}</h1>
-  <!-- <button (click)="decrementApp2('minus')">-</button> -->
-  <button matMiniFab (click)="incrementApp2('pluse')" style="display: inline-block"><mat-icon>add</mat-icon></button>
-</div>
+<mat-card appearance="outlined" class="card-style">
+<!-- <div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 20px 10px; background-color: bisque; margin-bottom: 20px;"> -->
+  <button matMiniFab (click)="decrementApp2('minus')"><mat-icon>remove</mat-icon></button>
+  <h1>Counter: {{counter() }}</h1>
+  <button matMiniFab (click)="incrementApp2('pluse')"><mat-icon>add</mat-icon></button>
+<!-- </div> -->
+</mat-card>
 
 <div style="text-align: center; width: 50%; padding: 10px; border: solid 1px #000; margin: 0 auto; border-radius:20px;">
   <h3>
