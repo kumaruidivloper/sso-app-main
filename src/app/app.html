@@ -1,7 +1,7 @@
 
 <div style="margin: 0 auto; width: 80%; padding: 10px 10px;">
 <div style="text-align: center;">     
-  <button matButton="tonal" (click)="selectedOption === '1' ? sharedService.onIframeLoad('message', false)  :sharedService.sendMessageToApp2('message')" style="margin-right: 20px;">Send Message to App2</button>
+  <button matButton="tonal" (click)="selectedOption === '1' ? sharedService.onIframeLoad('message', false)  : sharedService.sendMessageToApp2('message')" style="margin-right: 20px;">Send Message to App2</button>
   <mat-form-field appearance="outline" style="width: 250px;">
   <mat-label>Please Select the Form</mat-label>
   <mat-select [(ngModel)]="selectedForm" (selectionChange)="onChange($event)" name="forms" id="forms">
