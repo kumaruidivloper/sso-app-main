@@ -26,6 +26,7 @@ export class AppComponent implements AfterViewInit {
   selectedForm: string = 'Please select the form';
   selectedOption: string = '1';
   @ViewChild('myIframe') myIframe!: ElementRef<HTMLInputElement>;
+
   iframeSize!: number;
 
   constructor(
@@ -39,6 +40,7 @@ ngOnInit() {
 
 ngAfterViewInit() {
     // console.log(this.myIframe.nativeElement);
+    console.log(this.myIframe.nativeElement);
   }
 
 handleMessage = (event: MessageEvent) => {
@@ -47,11 +49,18 @@ handleMessage = (event: MessageEvent) => {
   if (event.origin  !== 'http://localhost:4201') return;
   console.log('Message received in App1:', event.data);
   this.message.set(event.data);
-  this.conterHandler(event.data.process);
-  this.myIframe.nativeElement.style.height = event.data.iframeSize + 'px'
+  if(event.data.iframeSize !== undefined) {
+    this.conterHandler(event.data.process);
+  }
+  
+  if(this.myIframe) {
+    this.myIframe.nativeElement.style.height = event.data.iframeSize + 'px'
+  }
+  
 };
 
 conterHandler(value: any) {
+  console.log(this.counter())
   if(value === 'minus') {
     this.counter.set(this.counter() - 1);
   } else if(value === 'pluse') {
