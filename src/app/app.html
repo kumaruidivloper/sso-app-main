@@ -1,5 +1,5 @@
 
-<div style="margin: 0 auto; width: 80%; padding: 10px 10px;">
+<div style="margin: 0 auto; width: 90%; padding: 10px 10px;">
 <div style="text-align: center;">     
   <button matButton="tonal" (click)="selectedOption === '1' ? sharedService.onIframeLoad('message', false)  : sharedService.sendMessageToApp2('message')" style="margin-right: 20px;">Send Message to App2</button>
   <mat-form-field appearance="outline" style="width: 250px;">
@@ -29,7 +29,7 @@
 <!-- </div> -->
 </mat-card>
 
-<div style="text-align: center; width: 50%; padding: 10px; border: solid 1px #000; margin: 0 auto; border-radius:20px;">
+<div style="text-align: center; width: 90%; padding: 10px; border: solid 1px #000; margin: 0px auto 20px auto ; border-radius:20px;">
   <h3>
       <pre>{{message() | json}}</pre>
   </h3>
@@ -37,14 +37,29 @@
 </div>
 
 @if(selectedOption === '1') {
-  <div style="width: 80%; margin: 30px auto; border: solid 4px #b02911; background-color: #b02911; border-radius: 10px; color: #fff;">
-  <h3 style="text-align: center; font-style: italic; font-size: 22px;">SUB APP INSIDE THE IFRAME</h3>
+  <div style="margin: 0 auto; width: 90%; position: relative">
+  <span style="
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background: #e80719;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  ">SUB APP INSIDE THE IFRAME</span>
   <iframe 
     #myIframe 
     id="app2-iframe"
     src="https://kumaruidivloper.github.io/sso-app-sub/" 
-    width="100%"
-    style="border: none; min-height: 500px;">
+    style="
+          box-shadow: 0 0 15px rgba(0,0,0,0.1);
+          width: 100%;
+          margin: 0 auto;
+          min-height: 500px;
+          border: solid 1px #0000003f;
+        ">
   </iframe>
 </div>
 }
