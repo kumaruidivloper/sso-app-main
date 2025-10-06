@@ -47,7 +47,9 @@ handleMessage = (event: MessageEvent) => {
   // if (event.origin  !== 'http://localhost:4201') return;
   console.log('Message received in App1:', event.data);
   this.message.set(event.data);
-  this.conterHandler(event.data.process);
+    if(event.data.iframeSize !== undefined) {
+    this.conterHandler(event.data.process);
+  }
   this.myIframe.nativeElement.style.height = event.data.iframeSize + 'px'
 };
 
