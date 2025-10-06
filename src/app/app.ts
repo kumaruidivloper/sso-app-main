@@ -7,12 +7,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSelectChange } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,FormsModule, MatButtonModule, MatSelectModule, MatRadioModule, MatIconModule],
+  imports: [CommonModule,FormsModule, MatButtonModule, MatSelectModule, MatRadioModule, MatIconModule, MatCardModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
